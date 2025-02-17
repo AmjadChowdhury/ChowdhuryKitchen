@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../Components/Button";
 import useMenu from "../../Hooks/useMenu";
 import MenuItem from "./MenuItem";
@@ -16,7 +17,7 @@ const MenuSection = ({ categoryName, btnName }) => {
             ))}
       </div>
       <div className="flex justify-center">
-        <Button name={btnName}></Button>
+        <Link to={`/order/${categoryName}`}><Button name={btnName}></Button></Link>
       </div>
     </div>
   );

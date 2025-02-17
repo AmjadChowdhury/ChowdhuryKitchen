@@ -4,7 +4,7 @@ import Button from "./Button";
 const FoodCard = ({item}) => {
   const {image,name,recipe} = item
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card border-2 border-b-4 border-b-yellow-600">
       <figure>
         <img src={image} alt={name} />
       </figure>
