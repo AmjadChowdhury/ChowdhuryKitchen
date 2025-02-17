@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+
 import PropTypes from "prop-types";
 import useMenu from "../../Hooks/useMenu";
 import TabPanelItem from "./TabPanelItem";
@@ -11,7 +13,6 @@ const OrderTab = ({ category }) => {
   const [tabIndex, setTabIndex] = useState(categoryTabIndex);
 
   const [menu] = useMenu();
-  console.log(menu);
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
   const soup = menu.filter((item) => item.category === "soup");
