@@ -1,7 +1,7 @@
 
 import HeadingTitle from "../../Components/HeadingTitle";
-import RecommendCard from "./RecommendCard";
 import useMenu from "../../Hooks/useMenu";
+import FoodCard from "../../Components/FoodCard";
 
 
 const Recommends = () => {
@@ -15,9 +15,9 @@ const Recommends = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mb-2">
                 {
                     loading? 'astese':
-                    offered.map(item => <RecommendCard
+                    offered.map(item => <FoodCard
                     key={item._id}
-                    item={item}></RecommendCard>)
+                    item={item}></FoodCard>)
                 }
             </div>
         </div>

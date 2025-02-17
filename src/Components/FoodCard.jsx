@@ -1,15 +1,12 @@
-import Button from "../../Components/Button";
 import PropTypes from "prop-types";
+import Button from "./Button";
 
-const RecommendCard = ({item}) => {
-    const {image,name,recipe} = item
+const FoodCard = ({item}) => {
+  const {image,name,recipe} = item
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img
-          src={image}
-          alt={name}
-        />
+        <img src={image} alt={name} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
@@ -22,8 +19,8 @@ const RecommendCard = ({item}) => {
   );
 };
 
-RecommendCard.propTypes = {
+FoodCard.propTypes = {
     item: PropTypes.object
 }
 
-export default RecommendCard;
+export default FoodCard;
