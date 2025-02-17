@@ -14,7 +14,7 @@ const LogIn = () => {
     const email = form.email.value;
     const password = form.password.value;
     const captchaValue = captchaRef.current.value;
-    console.log(email, password, captchaValue);
+    
   };
 
   const handleCaptcha = () => {
