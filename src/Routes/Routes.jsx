@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home";
 import Menu from "../Pages/Menu/Menu";
 import Order from "../Pages/Order/Order";
 import LogIn from "../Pages/LogIn/LogIn";
+import Register from "../Pages/Register/Register";
 
 
 
@@ -29,6 +30,10 @@ import LogIn from "../Pages/LogIn/LogIn";
         {
           path: "/login",
           element: <LogIn></LogIn>
+        },
+        {
+          path: "/register",
+          element: <Register></Register>
         }
       ]
     },
