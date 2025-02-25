@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -6,12 +6,13 @@ import {
 } from "react-simple-captcha";
 import logInImg from "../../assets/others/authentication1.png";
 import { Authcontext } from "../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
-  const { user, signIn } = useContext(Authcontext);
+  const { signIn } = useContext(Authcontext);
+  const navigate = useNavigate();
   const [disable, setDisable] = useState(true);
-  const captchaRef = useRef(null);
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -20,15 +21,44 @@ const LogIn = () => {
 
     signIn(email, password)
       .then((result) => {
-        console.log(result.user);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: `${result.user?.displayName} Signed in successfully`,
+        });
+        navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: `${error.message}`,
+        });
       });
   };
 
-  const handleCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
     if (validateCaptcha(user_captcha_value)) {
       setDisable(false);
     } else {
@@ -79,15 +109,12 @@ const LogIn = () => {
               <input
                 name="captcha"
                 type="text"
-                ref={captchaRef}
                 placeholder="please provide captcha"
                 className="input input-bordered"
                 required
+                onBlur={handleCaptcha}
               />
             </div>
-            <button className="btn" onClick={handleCaptcha}>
-              Validate
-            </button>
             <div className="form-control mt-6">
               <input
                 disabled={disable}
