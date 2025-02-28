@@ -3,9 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { Authcontext } from "../../Providers/AuthProvider";
 import userProfile from "../../assets/others/profile.png";
 import Swal from "sweetalert2";
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../Hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(Authcontext);
+  const [cart] = useCart()
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -64,10 +67,18 @@ const Navbar = () => {
       <li>
         <NavLink to="/register">Register</NavLink>
       </li>
+      <li>
+        <NavLink to="/">
+          <button className="btn">
+            <FaCartShopping></FaCartShopping>
+            <div className="badge badge-secondary">{cart.length}</div>
+          </button>
+        </NavLink>
+      </li>
     </>
   );
   return (
-    <div className="navbar fixed z-10 bg-opacity-30 text-white bg-base-100">
+    <div className="navbar fixed z-10 bg-opacity-10 text-white bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -110,7 +121,9 @@ const Navbar = () => {
               logout
             </button>
           ) : (
-            <Link to="/login"><button className="btn">Log In</button></Link>
+            <Link to="/login">
+              <button className="btn">Log In</button>
+            </Link>
           )}
         </div>
       </div>

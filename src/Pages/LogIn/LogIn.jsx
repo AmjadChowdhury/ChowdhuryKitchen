@@ -6,18 +6,23 @@ import {
 } from "react-simple-captcha";
 import logInImg from "../../assets/others/authentication1.png";
 import { Authcontext } from "../../Providers/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const LogIn = () => {
   const { signIn } = useContext(Authcontext);
   const navigate = useNavigate();
   const [disable, setDisable] = useState(true);
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+  console.log(location.state)
+
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
 
     signIn(email, password)
       .then((result) => {
@@ -36,7 +41,7 @@ const LogIn = () => {
           icon: "success",
           title: `${result.user?.displayName} Signed in successfully`,
         });
-        navigate("/");
+        navigate(from);
       })
       .catch((error) => {
         const Toast = Swal.mixin({

@@ -9,7 +9,7 @@ const MenuSection = ({ categoryName, btnName }) => {
   const menuItems = menu.filter((item) => item.category === categoryName);
   return (
     <div className="my-4">
-      <div className="grid md:grid-cols-2 gap-4 px-2">
+      <div className="grid md:grid-cols-2 gap-4 px-2 lg:p-8">
         {loading
           ? "astese"
           : menuItems.map((item) => (

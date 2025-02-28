@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const MenuItem = ({item}) => {
     const {name, image, recipe, price} = item
     return (
-        <div className="flex gap-4 mb-2">
+        <div className="flex gap-4 mb-2 lg:px-8">
             <div  className="h-[100px] w-[150px]">
                 <img src={image} alt="" className="w-full h-full rounded-tr-full rounded-bl-full rounded-br-full"  />
             </div>
