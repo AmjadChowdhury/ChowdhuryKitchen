@@ -28,49 +28,49 @@ const Category = () => {
       >
         <SwiperSlide>
           <img src={cat1} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Salad
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={cat2} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Pizza
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={cat3} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Soups
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={cat4} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Desserts
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={cat5} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Salad
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={cat2} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Pizza
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={cat3} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Soups
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={cat4} alt="" />
-          <h3 className="text-xl lg:text-4xl uppercase text-center text-white -mt-12">
+          <h3 className="text-base lg:text-2xl font-extrabold uppercase text-center text-white -mt-12">
             Desserts
           </h3>
         </SwiperSlide>

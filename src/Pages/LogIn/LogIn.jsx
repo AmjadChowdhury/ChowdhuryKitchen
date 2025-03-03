@@ -131,7 +131,7 @@ const LogIn = () => {
             <div className="my-2">
               <h1 className="font-bold text-base text-center">
                 New Here?Please{" "}
-                <Link to="/register" className="text-yellow-900">
+                <Link to="/register" className="text-yellow-600">
                   Register
                 </Link>
               </h1>

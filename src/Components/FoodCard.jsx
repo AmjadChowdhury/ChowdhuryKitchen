@@ -73,7 +73,7 @@ const FoodCard = ({item}) => {
         <p>{recipe}</p>
       </div>
       <div className="mb-2 flex justify-center">
-      <button onClick={handleAddToCart} className="btn btn-outline border-b-2 text-yellow-600 hover:border-none hover:text-yellow-600">Add to cart</button>
+      <button onClick={handleAddToCart} className="btn btn-outline border-b-2 text-xs font-semibold text-yellow-600 hover:border-none hover:text-yellow-600">Add to cart</button>
       </div>
     </div>
   );

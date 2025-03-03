@@ -9,8 +9,8 @@ const MenuItem = ({item}) => {
                 <img src={image} alt="" className="w-full h-full rounded-tr-full rounded-bl-full rounded-br-full"  />
             </div>
             <div className="flex-1">
-                <h1 className="text-2xl uppercase">{name}-------</h1>
-                <p>{recipe}</p>
+                <h1 className="text-lg md:text-xl font-bold uppercase">{name} --</h1>
+                <p className="text-base">{recipe}</p>
             </div>
             <div className="">
                 <p className="flex justify-start items-center text-yellow-600 font-bold text-xl"><FaDollarSign></FaDollarSign>{price}</p>
