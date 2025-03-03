@@ -4,9 +4,12 @@ import { Authcontext } from "../../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../Components/SocialLogin";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(Authcontext);
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const {
     register,
@@ -39,20 +42,30 @@ const Register = () => {
         });
         updateUser(name, photo)
           .then(() => {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-              },
-            });
-            Toast.fire({
-              icon: "success",
-              title: "Profile Update.!",
+            // create user entry in db..
+            const userInfo = {
+              name: name,
+              email: email,
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: "top-end",
+                  showConfirmButton: false,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                  },
+                });
+                Toast.fire({
+                  icon: "success",
+                  title: "Profile Update.!",
+                });
+                navigate("/");
+              }
             });
           })
           .catch((error) => {
@@ -72,7 +85,6 @@ const Register = () => {
               title: `${error.message}`,
             });
           });
-        navigate("/");
       })
       .catch((error) => {
         const Toast = Swal.mixin({
@@ -199,6 +211,10 @@ const Register = () => {
               </h1>
             </div>
           </form>
+          <div className="divider"></div>
+          <div className="mb-4 ml-4">
+              <SocialLogin></SocialLogin>
+          </div>
         </div>
       </div>
     </div>

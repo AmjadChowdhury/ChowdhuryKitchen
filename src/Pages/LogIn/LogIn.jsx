@@ -8,6 +8,7 @@ import logInImg from "../../assets/others/authentication1.png";
 import { Authcontext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin";
 
 const LogIn = () => {
   const { signIn } = useContext(Authcontext);
@@ -137,6 +138,10 @@ const LogIn = () => {
               </h1>
             </div>
           </form>
+          <div className="divider"></div>
+          <div className="mb-4 ml-4">
+              <SocialLogin></SocialLogin>
+          </div>
         </div>
       </div>
     </div>
