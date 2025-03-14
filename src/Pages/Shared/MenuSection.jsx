@@ -4,6 +4,7 @@ import useMenu from "../../Hooks/useMenu";
 import MenuItem from "./MenuItem";
 import PropTypes from "prop-types";
 
+
 const MenuSection = ({ categoryName, btnName }) => {
   const [menu, loading] = useMenu();
   const menuItems = menu.filter((item) => item.category === categoryName);

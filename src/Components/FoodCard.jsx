@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCart from "../Hooks/useCart";
+// import { motion } from "motion/react"
+
 
 const FoodCard = ({item}) => {
   const {image,name,recipe,_id,price} = item
@@ -64,7 +66,8 @@ const FoodCard = ({item}) => {
     }
   }
   return (
-    <div className="card border-2 border-b-4 border-b-yellow-600">
+    
+<div className="card border-2 border-b-4 border-b-yellow-600">
       <figure>
         <img src={image} alt={name} />
       </figure>
@@ -76,6 +79,8 @@ const FoodCard = ({item}) => {
       <button onClick={handleAddToCart} className="btn btn-outline border-b-2 text-xs font-semibold text-yellow-600 hover:border-none hover:text-yellow-600">Add to cart</button>
       </div>
     </div>
+
+    
   );
 };
 
