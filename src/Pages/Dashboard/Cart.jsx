@@ -3,6 +3,7 @@ import HeadingTitle from "../../Components/HeadingTitle.jsx";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart,refetch] = useCart();
@@ -41,17 +42,19 @@ const Cart = () => {
       ></HeadingTitle>
 
       <div>
-        <div className="flex justify-evenly items-center mb-8">
-          <h2 className="text-4xl">Items : {cart.length}</h2>
-          <h2 className="text-4xl">Total Price : {totalPrice}</h2>
-          <button className="btn bg-blue-500">Pay</button>
+        <div className="flex justify-around items-center mb-8">
+          <h2 className="text-2xl font-bold">Items : <span className="text-[#D1A054]">{cart.length}</span></h2>
+          <h2 className="text-2xl font-bold">Total Price : <span className="text-[#D1A054]">{totalPrice} </span>tk.</h2>
+          {
+            cart.length ? <Link to="/dashboard/payment"><button className="btn bg-[#D1A054] text-white">Pay</button></Link> : <button disabled className="btn bg-[#D1A054] text-white">Pay</button>
+          }
         </div>
         <div>
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
               <thead>
-                <tr>
+                <tr className="bg-[#D1A054] text-white rounded-full">
                   <th>
                     #
                   </th>
@@ -63,7 +66,7 @@ const Cart = () => {
               </thead>
               <tbody>
                 {
-                    cart.map((item,idx) => <tr key={item._id}>
+                    cart.map((item,idx) => <tr key={item._id} className={`${idx%2 == 0 ? 'bg-slate-100': 'bg-white'}`}>
                         <th>
                           {idx+1}
                         </th>
@@ -86,7 +89,7 @@ const Cart = () => {
                         <th>
                           <button
                            onClick={()=> handleDelete(item._id)}
-                           className="btn btn-ghost btn-xs"><FaTrash className="text-2xl text-red-500"></FaTrash></button>
+                           className="btn bg-white"><FaTrash className="text-2xl text-red-500"></FaTrash></button>
                         </th>
                       </tr>)
                 }

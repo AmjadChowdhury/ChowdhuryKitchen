@@ -3,13 +3,14 @@ import HeadingTitle from "../../Components/HeadingTitle";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_imgbb_KEY;
 const image_hosting_Api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateItems = () => {
   const item = useLoaderData();
-  const { _id, image, recipe,price, category, name } = item;
+  const { _id,  recipe,price, category, name } = item;
 
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
@@ -32,7 +33,28 @@ const UpdateItems = () => {
       };
       const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuInfo);
       if (menuRes.data.modifiedCount) {
-        reset();
+        reset({
+          name: "",
+          category: "",
+          price: "",
+          recipe: "",
+          image: ""
+        });
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Successfully Update an item!!"
+        });
       }
     }
   };
@@ -44,7 +66,7 @@ const UpdateItems = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Item Name</span>
+              <span className="label-text text-sm font-bold">Item Name</span>
             </label>
             <input
               {...register("name")}
@@ -58,7 +80,7 @@ const UpdateItems = () => {
           <div className="flex gap-6">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Category</span>
+                <span className="label-text text-sm font-bold">Category</span>
               </label>
               <select
                 {...register("category")}
@@ -75,7 +97,7 @@ const UpdateItems = () => {
 
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Price</span>
+                <span className="label-text text-sm font-bold">Price</span>
               </label>
               <input
                 {...register("price")}
@@ -89,7 +111,7 @@ const UpdateItems = () => {
 
           <div>
             <label className="label">
-              <span className="label-text">Recipe</span>
+              <span className="label-text text-sm font-bold">Recipe</span>
             </label>
             <textarea
               {...register("recipe")}
@@ -99,19 +121,19 @@ const UpdateItems = () => {
           </div>
           <div>
             <label className="label">
-              <span className="label-text">Item Image</span>
+              <span className="label-text text-sm font-bold">Item Image</span>
             </label>
             <input
               {...register("image")}
               type="file"
-              className="file-input w-full"
+              className="file-input w-full bg-[#D1A054] text-white"
             />
           </div>
-          <div className="flex justify-center mt-2">
+          <div className="flex justify-center mt-4">
             <input
               type="submit"
-              value="Add Items"
-              className="btn bg-black text-white"
+              value="Update Items"
+              className="btn text-xs font-bold text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]"
             />
           </div>
         </form>

@@ -1,22 +1,23 @@
-import { useContext, useEffect, useState } from "react";
-import {
-  loadCaptchaEnginge,
-  LoadCanvasTemplate,
-  validateCaptcha,
-} from "react-simple-captcha";
-import logInImg from "../../assets/others/authentication1.png";
+import { useContext } from "react";
+// import {
+//   loadCaptchaEnginge,
+//   LoadCanvasTemplate,
+//   validateCaptcha,
+// } from "react-simple-captcha";
+import logInImg from "../../assets/others/login.jpg";
 import { Authcontext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin";
+import backImg from '../../assets/others/authentication.png'
 
 const LogIn = () => {
   const { signIn } = useContext(Authcontext);
   const navigate = useNavigate();
-  const [disable, setDisable] = useState(true);
+  // const [disable, setDisable] = useState(true);
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  console.log(location.state)
+  console.log(from)
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ const LogIn = () => {
           icon: "success",
           title: `${result.user?.displayName} Signed in successfully`,
         });
-        navigate(from);
+        navigate(from,{replace: true});
       })
       .catch((error) => {
         const Toast = Swal.mixin({
@@ -63,18 +64,18 @@ const LogIn = () => {
       });
   };
 
-  const handleCaptcha = (e) => {
-    const user_captcha_value = e.target.value;
-    if (validateCaptcha(user_captcha_value)) {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
-  };
+  // const handleCaptcha = (e) => {
+  //   const user_captcha_value = e.target.value;
+  //   if (validateCaptcha(user_captcha_value)) {
+  //     setDisable(false);
+  //   } else {
+  //     setDisable(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
+  // useEffect(() => {
+  //   loadCaptchaEnginge(6);
+  // }, []);
 
   return (
     <div className="hero  min-h-screen">
@@ -82,9 +83,9 @@ const LogIn = () => {
         <div className="text-center lg:text-left lg:w-1/2">
           <img src={logInImg} alt="" />
         </div>
-        <div className="card border-2 border-yellow-900 w-full max-w-sm shrink-0 lg:w-1/2">
+        <div className="card border-2 border-[#D1A054] w-full max-w-sm shrink-0 lg:w-1/2" style={{backgroundImage: `url(${backImg})`,backgroundSize: 'cover'}}>
           <form className="card-body" onSubmit={handleLogIn}>
-            <div className="form-control">
+            <div className="form-control text-sm font-bold">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -96,7 +97,7 @@ const LogIn = () => {
                 required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control text-sm font-bold">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -108,7 +109,7 @@ const LogIn = () => {
                 required
               />
             </div>
-            <div className="form-control">
+            {/* <div className="form-control">
               <label className="label">
                 <LoadCanvasTemplate />
               </label>
@@ -120,28 +121,25 @@ const LogIn = () => {
                 required
                 onBlur={handleCaptcha}
               />
-            </div>
+            </div> */}
             <div className="form-control mt-6">
               <input
-                disabled={disable}
                 type="submit"
                 value="Login"
-                className="btn btn-outline border-b-2 text-yellow-600 hover:border-none hover:text-yellow-600"
+                className="btn btn-outline border-b-2 text-[#D1A054] hover:border-none hover:text-[#D1A054]"
               />
             </div>
             <div className="my-2">
               <h1 className="font-bold text-base text-center">
                 New Here?Please{" "}
-                <Link to="/register" className="text-yellow-600">
+                <Link to="/register" className="text-[#D1A054] underline">
                   Register
                 </Link>
               </h1>
+              <p className="text-center text-[#D1A054]">Or sign in with</p>
+              <SocialLogin/>
             </div>
           </form>
-          <div className="divider"></div>
-          <div className="mb-4 ml-4">
-              <SocialLogin></SocialLogin>
-          </div>
         </div>
       </div>
     </div>

@@ -67,15 +67,15 @@ const AllUsers = () => {
         subHeading="How many"
         heading={"Manage All Users"}
       ></HeadingTitle>
-      <div className="flex justify-evenly">
-        <h2>All Users</h2>
-        <h2>Total Users {users.length}</h2>
+      <div className="flex justify-evenly mb-4">
+        <h2 className="text-2xl font-bold">All Users</h2>
+        <h2 className="text-2xl font-bold">Total Users <span className="text-[#D1A054]">{users.length}</span></h2>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-[#D1A054] text-white">
               <th>#</th>
               <th>Name</th>
               <th>E-Mail</th>
@@ -87,7 +87,7 @@ const AllUsers = () => {
             {users.map((user, idx) => (
               <tr
                 key={user._id}
-                className={`${idx % 2 == 0 ? "bg-base-200" : "bg-white"}`}
+                className={`${idx % 2 == 0 ? "bg-slate-100" : "bg-white"}`}
               >
                 <th>{idx + 1}</th>
                 <td>{user.name}</td>
@@ -96,18 +96,18 @@ const AllUsers = () => {
                 {
                     user.role === 'admin' ? 'Admin' : <button
                     onClick={() => handleMakeAdmin(user)}
-                    className="btn bg-yellow-600"
+                    className="btn bg-white"
                     >
-                    <FaUsers className="text-2xl text-white"></FaUsers>
+                    <FaUsers className="text-2xl text-[#D1A054]"></FaUsers>
                     </button>
                 }
                 </td>
                 <td>
                   <button
                     onClick={() => handleDeleteUser(user._id)}
-                    className="btn bg-red-400"
+                    className="btn bg-white"
                   >
-                    <FaTrash className="text-2xl text-white"></FaTrash>
+                    <FaTrash className="text-2xl text-red-500"></FaTrash>
                   </button>
                 </td>
               </tr>

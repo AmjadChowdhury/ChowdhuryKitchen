@@ -5,10 +5,12 @@ import userProfile from "../../assets/others/profile.png";
 import Swal from "sweetalert2";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../Hooks/useCart";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(Authcontext);
-  const [cart] = useCart()
+  const [cart] = useCart();
+  const [isAdmin] = useAdmin();
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -69,20 +71,24 @@ const Navbar = () => {
       </li>
 
       <li>
-        <NavLink to="Dashboard">Dashboard</NavLink>
+        {isAdmin ? (
+          <NavLink to="Dashboard/adminHome">Dashboard</NavLink>
+        ) : (
+          <NavLink to="Dashboard/userHome">Dashboard</NavLink>
+        )}
       </li>
       <li>
-        <NavLink to="/">
-          <button className="btn">
-            <FaCartShopping></FaCartShopping>
-            <div className="badge badge-secondary">{cart.length}</div>
-          </button>
+        <NavLink to="/dashboard">
+          <div className="flex items-center rounded-lg gap-1 p-1 bg-black">
+            <FaCartShopping/>
+            <p className="badge badge-secondary">{cart.length}</p>
+          </div>
         </NavLink>
       </li>
     </>
   );
   return (
-    <div className="navbar fixed z-10  text-white bg-yellow-600">
+    <div className="navbar fixed z-10  text-white bg-[#D1A054]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -115,7 +121,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-2">
         <div className="avatar">
-          <div className="w-12 rounded-full">
+          <div className="w-10 h-10 rounded-full">
             <img src={`${user ? user?.photoURL : userProfile}`} />
           </div>
         </div>

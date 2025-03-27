@@ -1,7 +1,7 @@
 import { Parallax } from "react-parallax";
 import PropTypes from "prop-types";
 
-const Cover = ({ img,title }) => {
+const Cover = ({ img,title,description }) => {
   return (
     <Parallax
       blur={{ min: -15, max: 15 }}
@@ -13,9 +13,7 @@ const Cover = ({ img,title }) => {
         <div className="p-8 lg:p-16 text-center text-white bg-black bg-opacity-20">
           <h1 className="text-4xl uppercase">{title}</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-            quaerat dolor doloribus praesentium expedita quasi impedit enim
-            facere veritatis mollitia.
+            {description}
           </p>
         </div>
       </div>
@@ -25,7 +23,8 @@ const Cover = ({ img,title }) => {
 
 Cover.propTypes = {
     img: PropTypes.img,
-    title: PropTypes.string
+    title: PropTypes.string,
+    description: PropTypes.string
 }
 
 export default Cover;

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Button = ({name}) => {
     return (
-        <button className="btn btn-outline border-b-2 text-xs font-semibold text-yellow-600 hover:border-none hover:text-yellow-600">{name}</button>
+        <button className="btn text-xs font-bold text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]">{name}</button>
     );
 };
 

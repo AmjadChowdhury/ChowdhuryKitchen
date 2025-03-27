@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { GrUpdate } from "react-icons/gr";
 
 const ManageItems = () => {
-  const [ menu ] = useMenu();
+  const [ menu, ,refetch ] = useMenu();
   const axiosSecure = useAxiosSecure()
 
   const handleDeleteItem = (item) => {
@@ -26,6 +26,7 @@ const ManageItems = () => {
             const res = await axiosSecure.delete(`/menu/${item._id}`)
             console.log(res.data)
             if(res.data.deletedCount){
+                refetch()
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",
@@ -45,7 +46,7 @@ const ManageItems = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-[#D1A054] text-white rounded">
               <th>#</th>
               <th>Image</th>
               <th>Name</th>
@@ -56,7 +57,7 @@ const ManageItems = () => {
           </thead>
           <tbody>
             {menu.map((item, idx) => (
-              <tr key={item._id}>
+              <tr key={item._id} >
                 <th>{idx + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
@@ -81,17 +82,17 @@ const ManageItems = () => {
                 <td>
                 <Link
                     to={`/dashboard/updateItem/${item._id}`}
-                    className="btn bg-green-400"
+                    className="btn bg-white"
                   >
-                    <GrUpdate className="text-2xl text-white"></GrUpdate>
+                    <GrUpdate className="text-2xl text-green-500"></GrUpdate>
                   </Link>
                 </td>
                 <td>
                   <button
                     onClick={() => handleDeleteItem(item)}
-                    className="btn bg-red-400"
+                    className="btn bg-white"
                   >
-                    <FaTrash className="text-2xl text-white"></FaTrash>
+                    <FaTrash className="text-2xl text-red-500"></FaTrash>
                   </button>
                 </td>
               </tr>

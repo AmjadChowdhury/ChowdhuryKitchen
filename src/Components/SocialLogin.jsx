@@ -1,7 +1,8 @@
-import { FaGoogle } from "react-icons/fa6";
+
 import useAuth from '../Hooks/useAuth'
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 
 const SocialLogin = () => {
@@ -26,10 +27,9 @@ const SocialLogin = () => {
     }
     return (
         <div>
-            <div>
-                <button onClick={handleGoogleSignIn} className="btn">
-                    <FaGoogle></FaGoogle>
-                    Google
+            <div className='flex justify-center'>
+                <button onClick={handleGoogleSignIn} className="text-2xl">
+                    <FcGoogle/>
                 </button>
             </div>
         </div>

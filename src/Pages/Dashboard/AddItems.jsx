@@ -41,9 +41,9 @@ const AddItems = () => {
 
       <div className="mx-4 p-4 bg-gray-100 rounded-lg">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control">
+          <div className="form-control ">
             <label className="label">
-              <span className="label-text">Item Name</span>
+              <span className="label-text text-sm font-bold">Item Name</span>
             </label>
             <input
               {...register("name")}
@@ -56,7 +56,7 @@ const AddItems = () => {
           <div className="flex gap-6">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Category</span>
+                <span className="label-text text-sm font-bold">Category</span>
               </label>
               <select
                 {...register("category")}
@@ -72,7 +72,7 @@ const AddItems = () => {
 
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Price</span>
+                <span className="label-text text-sm font-bold">Price</span>
               </label>
               <input
                 {...register("price")}
@@ -86,7 +86,7 @@ const AddItems = () => {
 
           <div>
             <label className="label">
-              <span className="label-text">Recipe</span>
+              <span className="label-text text-sm font-bold">Recipe</span>
             </label>
             <textarea
               {...register("recipe")}
@@ -96,19 +96,19 @@ const AddItems = () => {
           </div>
           <div>
             <label className="label">
-              <span className="label-text">Item Image</span>
+              <span className="label-text text-sm font-bold">Item Image</span>
             </label>
             <input
               {...register("image")}
               type="file"
-              className="file-input w-full"
+              className="file-input w-full bg-[#D1A054] text-white"
             />
           </div>
-          <div className="flex justify-center mt-2">           
+          <div className="flex justify-center mt-4">           
             <input
               type="submit"
               value="Add Items"
-              className="btn bg-black text-white"
+              className="btn text-xs font-bold text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]"
             />
           </div>
         </form>

@@ -13,6 +13,13 @@ import AllUsers from "../Pages/Dashboard/AllUsers";
 import AddItems from "../Pages/Dashboard/AddItems";
 import ManageItems from "../Pages/Dashboard/ManageItems";
 import UpdateItems from "../Pages/Dashboard/UpdateItems";
+import Payment from "../Pages/Dashboard/Payment";
+import AdminHome from "../Pages/Dashboard/AdminHome";
+import UserHome from "../Pages/Dashboard/UserHome";
+import ErrorElement from "../Pages/ErrorElement/ErrorElement";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 
 
 
@@ -20,6 +27,7 @@ import UpdateItems from "../Pages/Dashboard/UpdateItems";
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorElement/>,
       children: [
         {
             path: "/",
@@ -45,29 +53,45 @@ import UpdateItems from "../Pages/Dashboard/UpdateItems";
     },
     {
       path: "dashboard",
-      element: <DashBoard></DashBoard>,
+      element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
       children: [
+        {
+          path: 'userHome',
+          element: <UserHome/>
+        },
         {
           path: "cart",
           element: <Cart></Cart>
         },
+        {
+          path: "payment",
+          element: <Payment></Payment>
+        },
+        {
+          path: "paymentHistory",
+          element: <PaymentHistory/>
+        },
 
         //admin route
         {
+          path: 'adminHome',
+          element: <AdminRoute><AdminHome/></AdminRoute>
+        },
+        {
           path: 'users',
-          element: <AllUsers></AllUsers>
+          element: <AdminRoute><AllUsers/></AdminRoute>
         },
         {
           path: 'addItems',
-          element: <AddItems></AddItems>
+          element: <AdminRoute><AddItems/></AdminRoute>
         },
         {
           path: 'manageItems',
-          element: <ManageItems></ManageItems>
+          element: <AdminRoute><ManageItems/></AdminRoute>
         },
         {
           path: `updateItem/:id`,
-          element: <UpdateItems></UpdateItems>,
+          element: <AdminRoute><UpdateItems/></AdminRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         }
       ]

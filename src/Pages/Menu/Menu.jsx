@@ -9,26 +9,31 @@ import HeadingTitle from "../../Components/HeadingTitle";
 
 
 const Menu = () => {
+    const menuDes = 'From crisp salads to sizzling pizzas, comforting soups to decadent desserts—every bite tells a delicious story! 🍕🥗🍰🍜'
+    const saladDes = "Fresh, crisp, and bursting with goodness—our salads redefine healthy indulgence! 🥗"
+    const soupDes = "Warm, comforting, and made with love—our soups are a hug in a bowl! 🍜"
+    const pizzaDes = "Oven-baked perfection with melty cheese and bold flavors—every slice is pure joy! 🍕"
+    const dessertdes = "Sweet dreams are made of this—treat yourself to pure indulgence! 🍰"
     return (
         <div>
-            <Cover img={menuImg} title="menu"></Cover>
+            <Cover img={menuImg} title="menu" description={menuDes}></Cover>
 
             <HeadingTitle
             subHeading="Don't miss"
             heading="Today's Offer"></HeadingTitle>
-            <MenuSection categoryName="offered" btnName="Order your favourite Food"></MenuSection>
+            <MenuSection categoryName="offered" btnName="Order offered Food"></MenuSection>
 
-            <Cover img={dessertsImg} title="Desserts"></Cover>
-            <MenuSection categoryName="dessert" btnName="Order your favourite Food"></MenuSection>
+            <Cover img={dessertsImg} title="Desserts" description={dessertdes}></Cover>
+            <MenuSection categoryName="dessert" btnName="Order dessert"></MenuSection>
 
-            <Cover img={pizzaImg} title="pizza"></Cover>
-            <MenuSection categoryName="pizza" btnName="Order your favourite Food"></MenuSection>
+            <Cover img={pizzaImg} title="pizza" description={pizzaDes}></Cover>
+            <MenuSection categoryName="pizza" btnName="Order pizza"></MenuSection>
 
-            <Cover img={saladImg} title="salad"></Cover>
-            <MenuSection categoryName="salad" btnName="Order your favourite Food"></MenuSection>
+            <Cover img={saladImg} title="salad" description={saladDes}></Cover>
+            <MenuSection categoryName="salad" btnName="Order salad"></MenuSection>
 
-            <Cover img={soupImg} title="soup"></Cover>
-            <MenuSection categoryName="soup" btnName="Order your favourite Food"></MenuSection>
+            <Cover img={soupImg} title="soup" description={soupDes}></Cover>
+            <MenuSection categoryName="soup" btnName="Order soup"></MenuSection>
             
             
         </div>

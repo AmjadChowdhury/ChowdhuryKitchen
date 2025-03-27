@@ -1,11 +1,15 @@
 import { useContext } from "react";
-import logInImg from "../../assets/others/authentication1.png";
+import logInImg from "../../assets/others/login.jpg";
+import backImg from "../../assets/others/authentication.png";
 import { Authcontext } from "../../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../Components/SocialLogin";
+
+const image_hosting_key = import.meta.env.VITE_imgbb_KEY;
+const image_hosting_Api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Register = () => {
   const { createUser, updateUser } = useContext(Authcontext);
@@ -16,93 +20,87 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    const photo = data.photo;
 
-    createUser(email, password)
-      .then((result) => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: `${result.user?.displayName} Signed in successfully`,
-        });
-        updateUser(name, photo)
-          .then(() => {
-            // create user entry in db..
-            const userInfo = {
-              name: name,
-              email: email,
-            };
-            axiosPublic.post("/users", userInfo).then((res) => {
-              if (res.data.insertedId) {
-                const Toast = Swal.mixin({
-                  toast: true,
-                  position: "top-end",
-                  showConfirmButton: false,
-                  timer: 3000,
-                  timerProgressBar: true,
-                  didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                  },
-                });
-                Toast.fire({
-                  icon: "success",
-                  title: "Profile Update.!",
-                });
-                navigate("/");
-              }
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_Api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    if (res.data.success) {
+      const photo = res.data.data.display_url;
+
+      createUser(email, password)
+        .then((result) => {
+          console.log(result.user)
+          updateUser(name, photo)
+            .then(() => {
+              // create user entry in db..
+              const userInfo = {
+                name: name,
+                email: email,
+              };
+              axiosPublic.post("/users", userInfo).then((res) => {
+                if (res.data.insertedId) {
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseenter = Swal.stopTimer;
+                      toast.onmouseleave = Swal.resumeTimer;
+                    },
+                  });
+                  Toast.fire({
+                    icon: "success",
+                    title: `${name} signed in successfully and Profile Update.!`,
+                  });
+                  navigate("/");
+                }
+              });
+            })
+            .catch((error) => {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                },
+              });
+              Toast.fire({
+                icon: "success",
+                title: `${error.message}`,
+              });
             });
-          })
-          .catch((error) => {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-              },
-            });
-            Toast.fire({
-              icon: "success",
-              title: `${error.message}`,
-            });
+        })
+        .catch((error) => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            },
           });
-      })
-      .catch((error) => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
+          Toast.fire({
+            icon: "error",
+            title: `${error.message}`,
+          });
         });
-        Toast.fire({
-          icon: "error",
-          title: `${error.message}`,
-        });
-      });
+    }
   };
   return (
     <div className="hero  min-h-screen">
@@ -110,9 +108,15 @@ const Register = () => {
         <div className="text-center lg:text-left lg:w-1/2">
           <img src={logInImg} alt="" />
         </div>
-        <div className="card border-2 border-yellow-900 w-full max-w-sm shrink-0 lg:w-1/2">
+        <div
+          className="card border-2 border-[#D1A054] w-full max-w-sm shrink-0 lg:w-1/2"
+          style={{
+            backgroundImage: `url(${backImg})`,
+            backgroundSize: "cover",
+          }}
+        >
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
+            <div className="form-control text-sm font-bold">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -127,7 +131,7 @@ const Register = () => {
                 <span className="text-red-600">Name is required</span>
               )}
             </div>
-            <div className="form-control">
+            <div className="form-control text-sm font-bold">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -142,7 +146,7 @@ const Register = () => {
                 <span className="text-red-600">Email is required</span>
               )}
             </div>
-            <div className="form-control">
+            <div className="form-control text-sm font-bold">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -179,16 +183,14 @@ const Register = () => {
                 </span>
               )}
             </div>
-            <div className="form-control">
+            <div className="form-control text-sm font-bold">
               <label className="label">
-                <span className="label-text">Photo URL</span>
+                <span className="label-text text-sm font-bold">Photo</span>
               </label>
               <input
-                {...register("photo", { required: true })}
-                name="photo"
-                type="text"
-                placeholder="Photo URL"
-                className="input input-bordered"
+                {...register("image", { required: true })}
+                type="file"
+                className="file-input w-full bg-[#D1A054] text-white"
               />
               {errors.name && (
                 <span className="text-red-600">Name is required</span>
@@ -198,23 +200,21 @@ const Register = () => {
               <input
                 type="submit"
                 value="Sign Up"
-                className="btn btn-outline border-b-2 text-yellow-600 hover:border-none hover:text-yellow-600 "
+                className="btn btn-outline border-b-2 text-[#D1A054] hover:border-none hover:text-[#D1A054]"
               />
             </div>
             <div className="my-2">
               <h1 className="font-bold text-base text-center">
                 Already have an account!!Please
-                <Link to="/login" className="text-yellow-600">
+                <Link to="/login" className="text-[#D1A054] underline">
                   {" "}
                   logIn
                 </Link>
               </h1>
+              <p className="text-center text-[#D1A054]">Or Sign up with</p>
+              <SocialLogin />
             </div>
           </form>
-          <div className="divider"></div>
-          <div className="mb-4 ml-4">
-              <SocialLogin></SocialLogin>
-          </div>
         </div>
       </div>
     </div>
