@@ -10,7 +10,7 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 const Testimonial = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://chowdhury-kitchen-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   });
@@ -41,28 +41,28 @@ const Testimonial = () => {
                       return (
                         <FaStar
                           key={index}
-                          className="text-yellow-600 text-xl"
+                          className="text-[#D1A054] text-xl"
                         />
                       );
                     } else if (index + 0.5 < review.rating) {
                       return (
                         <FaStarHalfAlt
                           key={index}
-                          className="text-yellow-600 text-xl"
+                          className="text-[#D1A054] text-xl"
                         />
                       );
                     } else {
                       return (
                         <FaRegStar
                           key={index}
-                          className="text-yellow-600 text-xl"
+                          className="text-[#D1A054] text-xl"
                         />
                       );
                     }
                   })}
                 </div>
                 <p>{review.details}</p>
-                <h1 className="text-yellow-600">{review.name}</h1>
+                <h1 className="text-[#D1A054]">{review.name}</h1>
               </div>
             </SwiperSlide>
           ))}

@@ -20,6 +20,9 @@ import ErrorElement from "../Pages/ErrorElement/ErrorElement";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import Review from "../Pages/Dashboard/Review";
+import Contact from "../Pages/Dashboard/Contact";
+
 
 
 
@@ -48,7 +51,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
         {
           path: "/register",
           element: <Register></Register>
-        }
+        },
       ]
     },
     {
@@ -71,6 +74,14 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
           path: "paymentHistory",
           element: <PaymentHistory/>
         },
+        {
+          path: "review",
+          element: <Review/>
+        },
+        {
+          path: "contact",
+          element: <Contact/>
+        },
 
         //admin route
         {
@@ -92,7 +103,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
         {
           path: `updateItem/:id`,
           element: <AdminRoute><UpdateItems/></AdminRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+          loader: ({params}) => fetch(`https://chowdhury-kitchen-server.vercel.app/menu/${params.id}`)
         }
       ]
     }

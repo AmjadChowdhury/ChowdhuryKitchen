@@ -1,0 +1,21 @@
+a.active li{
+    
+
+    /* text-decoration: underline black; */
+    /* box-shadow: 1px 1px 10px #D1A054; */
+    border-bottom: 2px solid black;
+    padding-bottom: 2px;
+    color: black;
+    /* box-shadow: 2px 2px 2px 1px purple; */
+    /* border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    padding: 5px; */
+    /* background-color: #D1A054;
+    color: white; */
+    /* padding-bottom: 4px; */
+    /* font-weight: bolder; */
+    /* padding: 2px; */
+    font-size: 20px;
+    
+    
+}

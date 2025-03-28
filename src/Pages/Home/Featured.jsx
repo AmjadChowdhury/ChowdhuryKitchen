@@ -14,7 +14,7 @@ const Featured = () => {
             <img src={featuredimg} alt="" className="w-full" />
         </div>
         <div className="flex-1 space-y-2">
-          <p className="text-lg md:text-2xl font-semibold text-yellow-600">March 20, 2023</p>
+          <p className="text-lg md:text-2xl font-semibold text-[#D1A054]">March 20, 2023</p>
           <p className="text-lg md:text-2xl font-semibold">WHERE CAN I GET SOME?</p>
           <p className="text-base">
             WHERE CAN I GET SOME? Lorem ipsum dolor sit amet consectetur

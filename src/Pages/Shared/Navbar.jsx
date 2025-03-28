@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../Hooks/useCart";
 import useAdmin from "../../Hooks/useAdmin";
+import './Navbar.css'
+
 
 const Navbar = () => {
   const { user, logOut } = useContext(Authcontext);
@@ -50,41 +52,40 @@ const Navbar = () => {
   };
   const navItems = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+    
+        <NavLink to="/"><li className="text-xs mx-3 border-none lg:text-sm font-bold mb-2 lg:mb-0">Home</li></NavLink>
+      
 
-      <li>
-        <NavLink to="/menu">Our Menu</NavLink>
-      </li>
+  
+        <NavLink to="/menu"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Our Menu</li></NavLink>
+      
 
-      <li>
-        <NavLink to="/order/salad">Order</NavLink>
-      </li>
+     
+        <NavLink to="/order/salad"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Order</li></NavLink>
+     
 
-      <li>
-        <NavLink to="/login">LogIn</NavLink>
-      </li>
+     
+        <NavLink to="/login"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Login</li></NavLink>
+     
 
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
+        {/*       
+        <NavLink to="/register"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Sign Up</li></NavLink> */}
+     
 
-      <li>
+    
         {isAdmin ? (
-          <NavLink to="Dashboard/adminHome">Dashboard</NavLink>
+          <NavLink to="Dashboard/adminHome"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Dashboard</li></NavLink>
         ) : (
-          <NavLink to="Dashboard/userHome">Dashboard</NavLink>
+          <NavLink to="Dashboard/userHome"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Dashboard</li></NavLink>
         )}
-      </li>
-      <li>
+     
+      
         <NavLink to="/dashboard">
-          <div className="flex items-center rounded-lg gap-1 p-1 bg-black">
-            <FaCartShopping/>
-            <p className="badge badge-secondary">{cart.length}</p>
-          </div>
+        <li className="text-xs lg:mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">
+            <p className="-mt-2 px-2 border-2  border-white  flex justify-start"><FaCartShopping className="text-lg"/><span className="badge badge-secondary">{cart.length}</span></p>
+          </li>
         </NavLink>
-      </li>
+    
     </>
   );
   return (
@@ -109,15 +110,15 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-[#D1A054]"
           >
             {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">ChowdhuryKitchen</a>
+        <a className=" text-white text-base font-extrabold shadow-sm shadow-black rounded-lg px-1"><span className="text-black">Chowdhury{" ' "}s</span> Kitchen</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1 text-white">{navItems}</ul>
       </div>
       <div className="navbar-end gap-2">
         <div className="avatar">
@@ -127,12 +128,14 @@ const Navbar = () => {
         </div>
         <div>
           {user ? (
-            <button className="btn" onClick={handleLogOut}>
+            <button className="btn text-xs font-bold text-[#D1A054]
+               hover:text-[#D1A054] border-2 border-gray-100  bg-black hover:bg-black" onClick={handleLogOut}>
               logout
             </button>
           ) : (
             <Link to="/login">
-              <button className="btn">Log In</button>
+              <button className="btn text-xs font-bold text-[#D1A054]
+               hover:text-[#D1A054] border-2 border-gray-100  bg-black hover:bg-black">Log In</button>
             </Link>
           )}
         </div>

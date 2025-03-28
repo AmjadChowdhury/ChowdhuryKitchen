@@ -2,13 +2,12 @@ import { FaAd, FaHome, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import {
   FaArrowRightFromBracket,
   FaBook,
-  FaCalendar,
   FaEnvelope,
   FaList,
   FaPaypal,
   FaUtensils,
 } from "react-icons/fa6";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
 import useAuth from "../Hooks/useAuth";
@@ -19,14 +18,14 @@ const DashBoard = () => {
   const { logOut } = useAuth();
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
-  // const navigate = useNavigate()
-  // const location = useLocation()
-  // location.pathname = '/'
+  const navigate = useNavigate()
+  const location = useLocation()
   const handleLogOut = () => {
     logOut()
       .then(() => {
         console.log("Log out");
-        // navigate('/' ,{state: {from: location}, replace})
+        location.pathname = "/"
+        navigate('/',{state: {from: location}})
       })
       .catch((error) => {
         console.log(error.message);
@@ -34,13 +33,10 @@ const DashBoard = () => {
   };
   return (
     <div className="flex h-screen">
-      <div className="w-1/6 bg-[#D1A054] min-h-screen overflow-hidden text-white flex flex-col justify-between">
+      <div className="w-2/6 lg:w-1/6 bg-[#D1A054] min-h-screen overflow-hidden text-white flex flex-col justify-between">
         <div>
-          <h2 className="ml-2 text-2xl my-4 font-extrabold">
-            <span className="font-extrabold text-3xl text-blue-500">
-              Chowdhurys
-            </span>{" "}
-            <br /> Kitchen
+          <h2 className="ml-2 text-base flex justify-center gap-1 shadow-sm shadow-black rounded-lg mt-4 font-extrabold">
+            <span className="text-black">Chowdhury{" ' "}s</span>Kitchen
           </h2>
           <ul className="menu">
             {isAdmin ? (
@@ -60,11 +56,11 @@ const DashBoard = () => {
                   <span className="flex gap-2 items-center"><FaList/>Manage Items</span>
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/dashboard/bookings">
                   <span className="flex gap-2 items-center"><FaBook/>Manage Bookings</span>
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/dashboard/users">
                   <span className="flex gap-2 items-center"><FaUser/> All Users</span>
@@ -78,11 +74,11 @@ const DashBoard = () => {
                   <span className="flex gap-2 items-center"><FaHome/>User Home</span>
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/dashboard/reservation">
                   <span className="flex gap-2 items-center"><FaCalendar/>Reservation</span>
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/dashboard/payment">
                   <span className="flex gap-2 items-center"><FaPaypal/>Payment</span>
@@ -119,7 +115,7 @@ const DashBoard = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contact">
+              <NavLink to="/dashboard/contact">
                 <FaEnvelope></FaEnvelope>
                 Contact
               </NavLink>
@@ -135,7 +131,7 @@ const DashBoard = () => {
           <span>Logout</span>
         </div>
       </div>
-      <div className="w-5/6 p-8 flex-1 overflow-y-auto">
+      <div className="w-4/6 lg:w-5/6 p-8 flex-1 overflow-y-auto">
         <Outlet></Outlet>
       </div>
     </div>

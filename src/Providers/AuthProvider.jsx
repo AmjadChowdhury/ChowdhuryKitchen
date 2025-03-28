@@ -21,6 +21,7 @@ const AuthProvider = ({children}) => {
                 axiosPublic.post('/jwt',userInfo)
                 .then(res => {
                     if(res.data.token){
+                        setLoading(false)
                         localStorage.setItem('access_token',res.data.token)
                     }
                 })
@@ -28,8 +29,8 @@ const AuthProvider = ({children}) => {
             else{
                 //TOdo: Remove token(if token stored in the client side: LS, caching, in memory)
                 localStorage.removeItem('access_token')
+                setLoading(false)
             }
-            setLoading(false)
             console.log('current',currentUser)
         })
         return () => {
@@ -53,6 +54,7 @@ const AuthProvider = ({children}) => {
     }
 
     const updateUser = (name,photo) => {
+        setLoading(true)
         return updateProfile(auth.currentUser,{
             displayName: name, photoURL: photo
         })
