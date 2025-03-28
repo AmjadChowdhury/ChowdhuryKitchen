@@ -64,7 +64,7 @@ Chowdhury's Kitchen is a homemade food delivery platform based in Chittagong, Ba
 ![Payment](https://i.ibb.co.com/xtCR3ccQ/Payment.png)
 
 **Payment History**  
-![Payment](https://i.ibb.co.com/dwtn3gQp/Payment-History.png)
+![PaymentHistory](https://i.ibb.co.com/TDhTbCjc/Payment-History.png)
 
 ### Admin Interface
 
