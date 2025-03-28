@@ -1,6 +1,6 @@
 # Chowdhury's Kitchen - Food Delivery System
 
-![Chowdhury's Kitchen Banner](https://via.placeholder.com/800x200?text=Chowdhury's+Kitchen+Banner)
+
 
 ## Table of Contents
 - [Overview](#overview)
@@ -63,6 +63,9 @@ Chowdhury's Kitchen is a homemade food delivery platform based in Chittagong, Ba
 **Checkout Page**  
 ![Payment](https://i.ibb.co.com/xtCR3ccQ/Payment.png)
 
+**Checkout Page**  
+![Payment](https://i.ibb.co.com/dwtn3gQp/Payment-History.png)
+
 ### Admin Interface
 
 **Admin Dashboard**  
@@ -80,4 +83,4 @@ Chowdhury's Kitchen is a homemade food delivery platform based in Chittagong, Ba
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/chowdhury-kitchen.git
+   git clone https://github.com/AmjadChowdhury/ChowdhuryKitchen.git
