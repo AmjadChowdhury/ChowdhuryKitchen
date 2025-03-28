@@ -1,5 +1,3 @@
-
-
 # Chowdhury's Kitchen - Food Delivery System
 
 ![Chowdhury's Kitchen Banner](https://via.placeholder.com/800x200?text=Chowdhury's+Kitchen+Banner)
@@ -41,26 +39,43 @@ Chowdhury's Kitchen is a homemade food delivery platform based in Chittagong, Ba
 ## Screenshots
 
 ### User Interface
-| ![Login Page](https://i.ibb.co.com/CK2cD0qN/login.png) | ![Sign Up Page](https://i.ibb.co.com/d4R4RQvq/signUp.png) |
-|--------------------------------------------------------|----------------------------|
-| **Login**                | **Sign Up**                |
 
-| ![User Home](https://i.ibb.co.com/Y7dRsSkp/Home1.jpg) | ![Menu Page](https://i.ibb.co.com/XkdLN1cp/Menu1.jpg) |
-|---------------------------|-------------------------|
-| **User Dashboard**        | **Menu**               |
+**Login Page**  
+![Login Page](https://i.ibb.co.com/CK2cD0qN/login.png)
 
-| ![Cart](MyCart.PNG) | ![Payment](Payment.PNG) |
-|---------------------|------------------------|
-| **Shopping Cart**   | **Checkout**          |
+**Sign Up Page**  
+![Sign Up Page](https://i.ibb.co.com/d4R4RQvq/signUp.png)
+
+**Landing Page**  
+![User Home](https://i.ibb.co.com/Y7dRsSkp/Home1.jpg)
+
+**Menu Page**  
+![Menu Page](https://i.ibb.co.com/XkdLN1cp/Menu1.jpg)
+
+### User Interface
+
+**User Dashboard**   
+![userHome](https://i.ibb.co.com/hqkZYXn/userHome.png)
+
+**Shopping Cart**  
+![Cart](https://i.ibb.co.com/S4SDHjjd/MyCart.png)
+
+**Checkout Page**  
+![Payment](https://i.ibb.co.com/xtCR3ccQ/Payment.png)
 
 ### Admin Interface
-| ![Admin Dashboard](https://i.ibb.co.com/v5929mM/admin-Home.png) | ![Add Items](https://i.ibb.co.com/Y4gFqR8w/AddItems.png) |
-|-----------------------------------|---------------------------|
-| **Admin Dashboard**               | **Add Menu Items**        |
 
-| ![Manage Items](https://i.ibb.co.com/NdM2XSjs/Manage-Items.png) | ![User Management](https://i.ibb.co.com/67N6WbpD/AllUsers.png) |
-|----------------------------------|---------------------------------|
-| **Manage Menu Items**            | **User Management**            |
+**Admin Dashboard**  
+![Admin Dashboard](https://i.ibb.co.com/v5929mM/admin-Home.png)
+
+**Add Menu Items**  
+![Add Items](https://i.ibb.co.com/Y4gFqR8w/AddItems.png)
+
+**Manage Menu Items**  
+![Manage Items](https://i.ibb.co.com/NdM2XSjs/Manage-Items.png)
+
+**User Management**  
+![User Management](https://i.ibb.co.com/67N6WbpD/AllUsers.png)
 
 ## Installation
 1. Clone the repository:
