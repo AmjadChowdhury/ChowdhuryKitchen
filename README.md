@@ -41,11 +41,11 @@ Chowdhury's Kitchen is a homemade food delivery platform based in Chittagong, Ba
 ## Screenshots
 
 ### User Interface
-| ![Login Page](https://i.ibb.co.com/Y7dRsSkp/Home1.jpg) | ![Sign Up Page](signUp.PNG) |
-|--------------------------|----------------------------|
+| ![Login Page](https://i.ibb.co.com/CK2cD0qN/login.png) | ![Sign Up Page](https://i.ibb.co.com/d4R4RQvq/signUp.png) |
+|--------------------------------------------------------|----------------------------|
 | **Login**                | **Sign Up**                |
 
-| ![User Home](userHome.PNG) | ![Menu Page](Menu1.jpg) |
+| ![User Home](https://i.ibb.co.com/Y7dRsSkp/Home1.jpg) | ![Menu Page](https://i.ibb.co.com/XkdLN1cp/Menu1.jpg) |
 |---------------------------|-------------------------|
 | **User Dashboard**        | **Menu**               |
 
@@ -54,11 +54,11 @@ Chowdhury's Kitchen is a homemade food delivery platform based in Chittagong, Ba
 | **Shopping Cart**   | **Checkout**          |
 
 ### Admin Interface
-| ![Admin Dashboard](adminHome.PNG) | ![Add Items](AddItems.PNG) |
+| ![Admin Dashboard](https://i.ibb.co.com/v5929mM/admin-Home.png) | ![Add Items](https://i.ibb.co.com/Y4gFqR8w/AddItems.png) |
 |-----------------------------------|---------------------------|
 | **Admin Dashboard**               | **Add Menu Items**        |
 
-| ![Manage Items](manageItems.PNG) | ![User Management](AllUsers.PNG) |
+| ![Manage Items](https://i.ibb.co.com/NdM2XSjs/Manage-Items.png) | ![User Management](https://i.ibb.co.com/67N6WbpD/AllUsers.png) |
 |----------------------------------|---------------------------------|
 | **Manage Menu Items**            | **User Management**            |
 
