@@ -1,3 +1,5 @@
+
+
 # Chowdhury's Kitchen - Food Delivery System
 
 ![Chowdhury's Kitchen Banner](https://via.placeholder.com/800x200?text=Chowdhury's+Kitchen+Banner)
@@ -39,7 +41,7 @@ Chowdhury's Kitchen is a homemade food delivery platform based in Chittagong, Ba
 ## Screenshots
 
 ### User Interface
-| ![Login Page](login.PNG) | ![Sign Up Page](signUp.PNG) |
+| ![Login Page](logo.png) | ![Sign Up Page](signUp.PNG) |
 |--------------------------|----------------------------|
 | **Login**                | **Sign Up**                |
 
