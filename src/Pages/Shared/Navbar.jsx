@@ -80,7 +80,7 @@ const Navbar = () => {
         )}
      
       
-        <NavLink to="/dashboard">
+        <NavLink to="/dashboard/cart">
         <li className="text-xs lg:mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">
             <p className="-mt-2 px-2 border-2  border-white  flex justify-start"><FaCartShopping className="text-lg"/><span className="badge badge-secondary">{cart.length}</span></p>
           </li>
