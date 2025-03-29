@@ -44,7 +44,7 @@ const DashBoard = () => {
   };
   return (
     <div className="flex h-screen">
-      <div className={`${openDash ? 'hidden lg:block' : 'block'}  w-2/6 lg:w-1/6 bg-[#D1A054] min-h-screen overflow-hidden text-white flex flex-col justify-between`}>
+      <div className={`${openDash ? 'hidden lg:block' : 'block'}  w-1/2 lg:w-1/6 bg-[#D1A054] min-h-screen overflow-hidden text-white flex flex-col justify-between`}>
         <div>
           <h2 className="ml-2 text-base flex justify-center gap-1 shadow-sm shadow-black rounded-lg mt-4 font-extrabold">
             <span className="text-black">Chowdhury{" ' "}s</span>Kitchen
@@ -142,7 +142,7 @@ const DashBoard = () => {
           <span>Logout</span>
         </div>
       </div>
-      <div className={`w-4/6 lg:w-5/6 p-1 lg:p-8 flex-1 overflow-y-auto`}>
+      <div className={`w-1/2 lg:w-5/6 p-1 lg:p-8 flex-1 overflow-y-auto`}>
         <button className="btn block lg:hidden ml-2 mt-2 bg-[#D1A054] text-white" onClick={handleBackToDash}><TiArrowBack  className="text-2xl"/></button>
         <Outlet></Outlet>
       </div>
