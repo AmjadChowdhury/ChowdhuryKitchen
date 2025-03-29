@@ -23,13 +23,13 @@ const PaymentHistory = () => {
 
       <div>
         <div className="flex justify-around items-center mb-8">
-          <h2 className="text-2xl font-bold">
-            Total Payment :{" "}
+          <h2 className="text-base lg:text-xl font-bold">
+            Payment :{" "}
             <span className="text-[#D1A054]">{paymentInfo.length} </span>
             times
           </h2>
-          <h2 className="text-2xl font-bold">
-            Total Price : <span className="text-[#D1A054]">{totalPriceOfPayment} </span>
+          <h2 className="text-base lg:text-xl font-bold">
+            Price : <span className="text-[#D1A054]">{totalPriceOfPayment} </span>
             tk.
           </h2>
         </div>

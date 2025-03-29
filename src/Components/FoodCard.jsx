@@ -64,13 +64,13 @@ const FoodCard = ({ item }) => {
   return (
     <div className="flex flex-col border border-dashed border-b-2 border-b-[#D1a054] hover:shadow-lg hover:shrink-0 hover:bg-opacity-90 hover:transition-all hover:scale-105">
       <figure>
-        <img src={image} alt={name} className="w-full" />
+        <img src={image} alt={name} className="w-full h-40" />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{name}</h2>
-        <p>{recipe}</p>
+      <div className="ml-4 mt-2 space-y-2">
+        <h2 className="card-title text-sm md:text-lg font-semibold">{name}</h2>
+        <p className="text-xs lg:text-sm">{recipe}</p>
       </div>
-      <div className="flex-1 mb-2 flex justify-center">
+      <div className="flex-1 mb-2 mt-4 flex justify-center">
         <button
           onClick={handleAddToCart}
           className="btn text-xs font-semibold text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]"

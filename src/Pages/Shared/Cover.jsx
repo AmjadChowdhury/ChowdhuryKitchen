@@ -9,10 +9,10 @@ const Cover = ({ img,title,description }) => {
       bgImageAlt="the dog"
       strength={-200}
     >
-      <div className="p-12 lg:p-20">
+      <div className="p-8 lg:p-20">
         <div className="p-8 lg:p-16 text-center text-white bg-black bg-opacity-20">
-          <h1 className="text-4xl uppercase">{title}</h1>
-          <p>
+          <h1 className="text-base lg:text-2xl font-bold uppercase">{title}</h1>
+          <p className="text-xs lg:text-base">
             {description}
           </p>
         </div>

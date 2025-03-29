@@ -88,14 +88,14 @@ const AdminHome = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">
+      <h1 className="text-base lg:text-xl font-bold mb-4">
         Hello!!! <br />
         Welcome,{" "}
         <span className="text-[#D1A054]">
           {isAdmin ? user?.displayName : "back"}
         </span>
       </h1>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
         <div className="stat rounded-lg bg-[#6f5bb7]">
           <div className="stat-figure text-secondary">
             <FaMoneyCheckAlt className="text-4xl" />
@@ -133,10 +133,10 @@ const AdminHome = () => {
         </div>
       </div>
 
-      <div className="flex mt-4">
-        <div className="w-1/2">
+      <div className="lg:flex mt-4">
+        <div className="lg:w-1/2">
           <BarChart
-            width={500}
+            width={300}
             height={300}
             data={order}
             margin={{
@@ -165,7 +165,7 @@ const AdminHome = () => {
             </Bar>
           </BarChart>
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart width={500} height={500}>
               <Pie

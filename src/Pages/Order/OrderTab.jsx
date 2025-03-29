@@ -23,7 +23,7 @@ const OrderTab = ({ category }) => {
   return (
     <div>
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <TabList className="flex justify-center text-xl my-2 font-bold">
+        <TabList className="flex justify-center text-sm lg:text-base my-2 font-bold">
           <Tab>Salad</Tab>
           <Tab>Pizza</Tab>
           <Tab>Soup</Tab>

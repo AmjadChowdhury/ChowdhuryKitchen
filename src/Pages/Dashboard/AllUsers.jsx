@@ -68,8 +68,8 @@ const AllUsers = () => {
         heading={"Manage All Users"}
       ></HeadingTitle>
       <div className="flex justify-evenly mb-4">
-        <h2 className="text-2xl font-bold">All Users</h2>
-        <h2 className="text-2xl font-bold">Total Users <span className="text-[#D1A054]">{users.length}</span></h2>
+        <h2 className="text-base lg:text-xl font-bold">All Users</h2>
+        <h2 className="text-base lg:text-2xl font-bold">Total Users <span className="text-[#D1A054]">{users.length}</span></h2>
       </div>
       <div className="overflow-x-auto">
         <table className="table">

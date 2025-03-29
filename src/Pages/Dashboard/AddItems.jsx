@@ -41,7 +41,7 @@ const AddItems = () => {
 
       <div className="mx-4 p-4 bg-gray-100 rounded-lg">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control ">
+          <div className="form-control">
             <label className="label">
               <span className="label-text text-sm font-bold">Item Name</span>
             </label>
@@ -53,7 +53,7 @@ const AddItems = () => {
               required
             />
           </div>
-          <div className="flex gap-6">
+          <div className="lg:flex gap-6">
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text text-sm font-bold">Category</span>

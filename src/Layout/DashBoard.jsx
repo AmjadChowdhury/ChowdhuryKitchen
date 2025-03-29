@@ -12,14 +12,25 @@ import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
 import useAuth from "../Hooks/useAuth";
 import "./DashBoard.css";
+import { useState } from "react";
+import { TiArrowBack } from "react-icons/ti";
 
 const DashBoard = () => {
+  const [openDash,setOpenDash] = useState(false)
   const [cart] = useCart();
   const { logOut } = useAuth();
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
   const navigate = useNavigate()
   const location = useLocation()
+
+  const handleOpendash = () => {
+    setOpenDash(true)
+  }
+
+  const handleBackToDash = () => {
+    setOpenDash(false)
+  }
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -33,7 +44,7 @@ const DashBoard = () => {
   };
   return (
     <div className="flex h-screen">
-      <div className="w-2/6 lg:w-1/6 bg-[#D1A054] min-h-screen overflow-hidden text-white flex flex-col justify-between">
+      <div className={`${openDash ? 'hidden lg:block' : 'block'}  w-2/6 lg:w-1/6 bg-[#D1A054] min-h-screen overflow-hidden text-white flex flex-col justify-between`}>
         <div>
           <h2 className="ml-2 text-base flex justify-center gap-1 shadow-sm shadow-black rounded-lg mt-4 font-extrabold">
             <span className="text-black">Chowdhury{" ' "}s</span>Kitchen
@@ -41,17 +52,17 @@ const DashBoard = () => {
           <ul className="menu">
             {isAdmin ? (
               <>
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/adminHome">
                     <span className="flex gap-2 items-center"><FaHome/>Admin Home</span>
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/addItems">
                   <span className="flex gap-2 items-center"><FaUtensils/>Add Items</span>
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/manageItems">
                   <span className="flex gap-2 items-center"><FaList/>Manage Items</span>
                   </NavLink>
@@ -61,7 +72,7 @@ const DashBoard = () => {
                   <span className="flex gap-2 items-center"><FaBook/>Manage Bookings</span>
                   </NavLink>
                 </li> */}
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/users">
                   <span className="flex gap-2 items-center"><FaUser/> All Users</span>
                   </NavLink>
@@ -69,7 +80,7 @@ const DashBoard = () => {
               </>
             ) : (
               <>
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/userHome">
                   <span className="flex gap-2 items-center"><FaHome/>User Home</span>
                   </NavLink>
@@ -79,22 +90,22 @@ const DashBoard = () => {
                   <span className="flex gap-2 items-center"><FaCalendar/>Reservation</span>
                   </NavLink>
                 </li> */}
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/payment">
                   <span className="flex gap-2 items-center"><FaPaypal/>Payment</span>
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/cart">
                   <span className="flex gap-2 items-center"><FaShoppingCart/>My Cart ({cart.length})</span>
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/review">
                   <span className="flex gap-2 items-center"><FaAd/>Add Review</span>
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={handleOpendash}>
                   <NavLink to="/dashboard/paymentHistory">
                   <span className="flex gap-2 items-center"><FaBook/>Payment History</span>
                   </NavLink>
@@ -131,7 +142,8 @@ const DashBoard = () => {
           <span>Logout</span>
         </div>
       </div>
-      <div className="w-4/6 lg:w-5/6 p-8 flex-1 overflow-y-auto">
+      <div className={`w-4/6 lg:w-5/6 p-1 lg:p-8 flex-1 overflow-y-auto`}>
+        <button className="btn block lg:hidden ml-2 mt-2 bg-[#D1A054] text-white" onClick={handleBackToDash}><TiArrowBack  className="text-2xl"/></button>
         <Outlet></Outlet>
       </div>
     </div>

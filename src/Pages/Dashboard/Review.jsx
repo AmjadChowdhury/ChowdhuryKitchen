@@ -42,7 +42,7 @@ const Review = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-sm font-bold">Item Name</span>
+              <span className="label-text text-sm font-bold">Valuable opinion</span>
             </label>
             <textarea
               {...register("details")}
@@ -55,7 +55,7 @@ const Review = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-sm font-bold">Valuable opinion</span>
+              <span className="label-text text-sm font-bold">Rating</span>
             </label>
             <input
               {...register("rating")}

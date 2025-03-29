@@ -28,7 +28,7 @@ const MenuSection = ({ categoryName, btnName }) => {
             ))}
       </div>
 
-      <div className="flex justify-evenly">
+      <div className="flex justify-evenly items-center">
         {totalPages > 1 && (
           <div className="join flex justify-center my-5">
             {[...Array(totalPages)].map((_, index) => (
@@ -47,7 +47,7 @@ const MenuSection = ({ categoryName, btnName }) => {
           </div>
         )}
 
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center">
           <Link to={`/order/${categoryName}`}>
             <Button name={btnName} />
           </Link>

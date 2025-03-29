@@ -121,11 +121,11 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 text-white">{navItems}</ul>
       </div>
       <div className="navbar-end gap-2">
-        <div className="avatar">
-          <div className="w-10 h-10 rounded-full">
+        <Link to="/dashboard/userHome" className="avatar">
+          <div className="w-12 h-12 rounded-full border-2">
             <img src={`${user ? user?.photoURL : userProfile}`} />
           </div>
-        </div>
+        </Link>
         <div>
           {user ? (
             <button className="btn text-xs font-bold text-[#D1A054]

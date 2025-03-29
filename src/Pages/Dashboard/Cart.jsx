@@ -42,11 +42,11 @@ const Cart = () => {
       ></HeadingTitle>
 
       <div>
-        <div className="flex justify-around items-center mb-8">
-          <h2 className="text-2xl font-bold">Items : <span className="text-[#D1A054]">{cart.length}</span></h2>
-          <h2 className="text-2xl font-bold">Total Price : <span className="text-[#D1A054]">{totalPrice} </span>tk.</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 items-center mb-8">
+          <h2 className="text-base lg:text-xl font-bold">Items : <span className="text-[#D1A054]">{cart.length}</span></h2>
+          <h2 className="text-base lg:text-xl font-bold">Price : <span className="text-[#D1A054]">{totalPrice} </span>tk.</h2>
           {
-            cart.length ? <Link to="/dashboard/payment"><button className="btn bg-[#D1A054] text-white">Pay</button></Link> : <button disabled className="btn bg-[#D1A054] text-white">Pay</button>
+            cart.length ? <Link to="/dashboard/payment" className="flex  justify-start lg:justify-end"><button className="btn bg-[#D1A054] text-white">Pay</button></Link> : <button disabled className="btn bg-[#D1A054] text-white">Pay</button>
           }
         </div>
         <div>
