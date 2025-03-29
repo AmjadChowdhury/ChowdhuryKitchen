@@ -15,7 +15,7 @@ const Menu = () => {
     const pizzaDes = "Oven-baked perfection with melty cheese and bold flavors—every slice is pure joy! 🍕"
     const dessertdes = "Sweet dreams are made of this—treat yourself to pure indulgence! 🍰"
     return (
-        <div>
+        <div className="pt-12 lg:pt-0">
             <Cover img={menuImg} title="menu" description={menuDes}></Cover>
 
             <HeadingTitle

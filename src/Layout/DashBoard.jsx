@@ -7,13 +7,14 @@ import {
   FaPaypal,
   FaUtensils,
 } from "react-icons/fa6";
+import { FaBackward } from "react-icons/fa";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
 import useAuth from "../Hooks/useAuth";
 import "./DashBoard.css";
 import { useState } from "react";
-import { TiArrowBack } from "react-icons/ti";
+
 
 const DashBoard = () => {
   const [openDash,setOpenDash] = useState(false)
@@ -29,7 +30,7 @@ const DashBoard = () => {
   }
 
   const handleBackToDash = () => {
-    setOpenDash(false)
+    setOpenDash(!openDash)
   }
   const handleLogOut = () => {
     logOut()
@@ -143,7 +144,7 @@ const DashBoard = () => {
         </div>
       </div>
       <div className={`w-1/2 lg:w-5/6 p-1 lg:p-8 flex-1 overflow-y-auto`}>
-        <button className="btn block lg:hidden ml-2 mt-2 bg-[#D1A054] text-white" onClick={handleBackToDash}><TiArrowBack  className="text-2xl"/></button>
+        <button className="btn block lg:hidden  mt-2 text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]" onClick={handleBackToDash}><FaBackward  className="text-2xl"/></button>
         <Outlet></Outlet>
       </div>
     </div>
