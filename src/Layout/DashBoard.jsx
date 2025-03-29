@@ -5,6 +5,7 @@ import {
   FaEnvelope,
   FaList,
   FaPaypal,
+  FaRightFromBracket,
   FaUtensils,
 } from "react-icons/fa6";
 import { FaBackward } from "react-icons/fa";
@@ -144,7 +145,9 @@ const DashBoard = () => {
         </div>
       </div>
       <div className={`w-1/2 lg:w-5/6 p-1 lg:p-8 flex-1 overflow-y-auto`}>
-        <button className="btn block lg:hidden  mt-2 text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]" onClick={handleBackToDash}><FaBackward  className="text-2xl"/></button>
+        {
+          openDash ? <button className="btn block lg:hidden  mt-2 text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]" onClick={handleBackToDash}><FaBackward  className="text-2xl"/></button> : <button className="btn block lg:hidden  mt-2 text-[#D1A054] hover:text-white hover:border-none bg-black hover:bg-[#D1A054]" onClick={handleBackToDash}><FaRightFromBracket  className="text-2xl"/></button>
+        }
         <Outlet></Outlet>
       </div>
     </div>
