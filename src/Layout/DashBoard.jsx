@@ -47,7 +47,7 @@ const DashBoard = () => {
   return (
     <div className="flex h-screen">
       <div className={`${openDash ? 'hidden lg:block' : 'block'}  w-1/2 lg:w-1/6 bg-[#D1A054] min-h-screen overflow-hidden text-white flex flex-col justify-between`}>
-        <div>
+        <div className="flex-1">
           <h2 className="ml-2 text-base flex justify-center gap-1 shadow-sm shadow-black rounded-lg mt-4 font-extrabold">
             <span className="text-black">Chowdhury{" ' "}s</span>Kitchen
           </h2>
@@ -117,7 +117,7 @@ const DashBoard = () => {
             <div className="divider"></div>
             <li>
               <NavLink to="/">
-                <FaHome></FaHome>
+               <FaHome/>
                 Home
               </NavLink>
             </li>
@@ -137,7 +137,7 @@ const DashBoard = () => {
         </div>
 
         <div
-          className="btn mx-4 my-4 bg-black text-[#D1A054] border-none hover:opacity-90 flex items-center gap-2 text-lg"
+          className="btn mx-4 my-4 bg-black text-[#D1A054] border-none hover:opacity-90 flex  items-center gap-2 text-lg"
           onClick={handleLogOut}
         >
           <FaArrowRightFromBracket />
