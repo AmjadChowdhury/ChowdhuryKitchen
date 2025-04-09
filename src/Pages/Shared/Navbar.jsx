@@ -53,19 +53,21 @@ const Navbar = () => {
   const navItems = (
     <>
     
-        <NavLink to="/"><li className="text-xs mx-3 border-none lg:text-sm font-bold mb-2 lg:mb-0">Home</li></NavLink>
+        <NavLink to="/"><li className="uppercase text-xs mx-3 border-none lg:text-sm font-bold mb-2 lg:mb-0">Home</li></NavLink>
       
 
   
-        <NavLink to="/menu"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Our Menu</li></NavLink>
+        <NavLink to="/menu"><li className="uppercase text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Our Menu</li></NavLink>
       
 
      
-        <NavLink to="/order/salad"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Order</li></NavLink>
+        <NavLink to="/order/salad"><li className="uppercase text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Order</li></NavLink>
      
 
      
-        <NavLink to="/login"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Login</li></NavLink>
+        {
+          !user && <NavLink to="/login"><li className="uppercase text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Login</li></NavLink>
+        }
      
 
         {/*       
@@ -74,15 +76,15 @@ const Navbar = () => {
 
     
         {isAdmin ? (
-          <NavLink to="Dashboard/adminHome"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Dashboard</li></NavLink>
+          <NavLink to="Dashboard/adminHome"><li className="uppercase text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Dashboard</li></NavLink>
         ) : (
-          <NavLink to="Dashboard/userHome"><li className="text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Dashboard</li></NavLink>
+          <NavLink to="Dashboard/userHome"><li className="uppercase text-xs mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">Dashboard</li></NavLink>
         )}
      
       
         <NavLink to="/dashboard/cart">
         <li className="text-xs lg:mx-3 border-none lg:text-sm  font-bold mb-2 lg:mb-0">
-            <p className="-mt-2 px-2 border-2  border-white  flex justify-start"><FaCartShopping className="text-lg"/><span className="badge badge-secondary">{cart.length}</span></p>
+            <p className="-mt-2 px-2 border-2 bg-purple-500  border-white  flex justify-start"><FaCartShopping className="text-lg text-white"/><span className="badge badge-secondary">{cart.length}</span></p>
           </li>
         </NavLink>
     
