@@ -10,41 +10,95 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin";
 import backImg from '../../assets/others/authentication.png'
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const LogIn = () => {
   const { signIn } = useContext(Authcontext);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic()
   // const [disable, setDisable] = useState(true);
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
   console.log(from)
-
+  
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log("Trying login with: ",email,password)
 
 
     signIn(email, password)
-      .then((result) => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
+      // previously design which have error..
+      // .then((result) => {
+
+        
+        
+      //   // const Toast = Swal.mixin({
+      //   //   toast: true,
+      //   //   position: "top-end",
+      //   //   showConfirmButton: false,
+      //   //   timer: 3000,
+      //   //   timerProgressBar: true,
+      //   //   didOpen: (toast) => {
+      //   //     toast.onmouseenter = Swal.stopTimer;
+      //   //     toast.onmouseleave = Swal.resumeTimer;
+      //   //   },
+      //   // });
+      //   // Toast.fire({
+      //   //   icon: "success",
+      //   //   title: `${result.user?.displayName} Signed in successfully`,
+      //   // });
+      //   // navigate(from,{replace: true});
+      //   // console.log("Login success: ",result)
+      // })
+
+    // after new setup
+   .then((result) => {
+    const loggedUser = result.user;
+
+    // Send email to backend for JWT
+    axiosPublic
+      .post("/jwt", { email: loggedUser.email })
+      .then((res) => {
+        const token = res.data.token;
+
+        // Save token in localStorage
+        localStorage.setItem("access_token", token);
+
+        // Also save user info if needed
+        const userInfo = {
+          name: loggedUser.displayName,
+          email: loggedUser.email,
+        };
+
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log("User saved:", res.data);
+
+          // Success toast
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: `${loggedUser?.displayName || "User"} Signed in successfully`,
+          });
+
+          // Navigate after saving everything
+          navigate(from, { replace: true });
         });
-        Toast.fire({
-          icon: "success",
-          title: `${result.user?.displayName} Signed in successfully`,
-        });
-        navigate(from,{replace: true});
-      })
+      });
+  })
+
       .catch((error) => {
         const Toast = Swal.mixin({
           toast: true,
@@ -61,6 +115,7 @@ const LogIn = () => {
           icon: "error",
           title: `${error.message}`,
         });
+        console.log("Login error: ",error)
       });
   };
 
