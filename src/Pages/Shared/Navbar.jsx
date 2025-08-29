@@ -9,10 +9,13 @@ import useAdmin from "../../Hooks/useAdmin";
 import './Navbar.css'
 
 
+
+
 const Navbar = () => {
   const { user, logOut } = useContext(Authcontext);
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
+  
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -87,6 +90,8 @@ const Navbar = () => {
             <p className="-mt-2 px-2 border-2 bg-purple-500  border-white  flex justify-start"><FaCartShopping className="text-lg text-white"/><span className="badge badge-secondary">{cart.length}</span></p>
           </li>
         </NavLink>
+
+        
     
     </>
   );
