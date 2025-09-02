@@ -4,15 +4,17 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCart from "../Hooks/useCart";
+// import { useState } from "react";
 // import { motion } from "motion/react"
 
 const FoodCard = ({ item }) => {
-  const { image, name, recipe, _id, price } = item;
+  const { image, name, recipe, _id, price, status } = item;
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
-  const [,refetch] = useCart();
+  const [, refetch] = useCart();
+  // const [quantityAvailable,setQuantityAvailable] = useState(0)
 
   const handleAddToCart = () => {
     if (user && user.email) {
@@ -27,6 +29,8 @@ const FoodCard = ({ item }) => {
         if (res.data.insertedId) {
           //refetch cart to update the cart items count..
           refetch();
+          console.log(cartItem);
+
           const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -42,7 +46,6 @@ const FoodCard = ({ item }) => {
             icon: "success",
             title: `${name} added to the carts.`,
           });
-          
         }
       });
     } else {
@@ -61,13 +64,34 @@ const FoodCard = ({ item }) => {
       });
     }
   };
+
+  // axiosSecure.get(`/menu/${_id}`)
+  // .then(res => {
+  //   console.log(res.data.quantity)
+  //   setQuantityAvailable
+  // })
+  // console.log(quantityAvailable)
+
   return (
     <div className="flex flex-col border border-dashed border-b-2 border-b-[#D1a054] hover:shadow-lg hover:shrink-0 hover:bg-opacity-90 hover:transition-all hover:scale-y-105 hover:border-[#D1A054]">
       <figure>
         <img src={image} alt={name} className="w-full h-40 lg:h-52" />
       </figure>
       <div className="flex-1 ml-4 mt-2 space-y-2">
-        <h2 className="card-title text-sm md:text-lg font-semibold">{name}</h2>
+        <div className="">
+          <h2 className="card-title text-sm md:text-lg font-semibold">
+            {name}
+          </h2>
+          <span
+            className={
+              status === "n"
+                ? "text-red-500 font-bold rounded-lg bg-gray-300 p-1"
+                : "text-green-500 font-bold rounded-lg bg-gray-300 p-1"
+            }
+          >
+            {status === "n" ? "Out of Stock" : "Available"}
+          </span>
+        </div>
         <p className="text-xs lg:text-sm">{recipe}</p>
       </div>
       <div className=" mb-2 mt-4 flex justify-center">
@@ -78,14 +102,44 @@ const FoodCard = ({ item }) => {
           Add to cart
         </button> */}
         {/* https://devdojo.com/tailwindcss/buttons */}
-         <button onClick={handleAddToCart}>
-            <a href="#_" class="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-[#D1A054] rounded-xl group">
-    <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-black rounded group-hover:-mr-4 group-hover:-mt-4">
-        <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
-    </span>
-    <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-black rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
-    <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">Add To cart</span>
-</a>
+
+        {/* <button onClick={handleAddToCart}>
+          <a
+            href="#_"
+            class="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-[#D1A054] rounded-xl group"
+          >
+            <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-black rounded group-hover:-mr-4 group-hover:-mt-4">
+              <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
+            </span>
+            <span class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-black rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+            <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
+              Add To cart
+            </span>
+          </a>
+        </button> */}
+
+        <button
+          onClick={() => {
+            if (status === "n") {
+              Swal.fire({
+                icon: "error",
+                title: "Out of Stock",
+                text: `${name} is not available right now!`,
+              });
+            } else {
+              handleAddToCart();
+            }
+          }}
+          disabled={status === "n"}
+          className={`relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all rounded-xl
+    ${
+      status === "n"
+        ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+        : "bg-[#D1A054] text-white hover:bg-black"
+    }
+  `}
+        >
+          Add To Cart
         </button>
       </div>
     </div>

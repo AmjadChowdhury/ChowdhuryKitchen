@@ -23,6 +23,7 @@ const AddItems = () => {
         name: data.name,
         category: data.category,
         price: parseFloat(data.price),
+        status: data.status,
         recipe: data.recipe,
         image: res.data.data.display_url,
       };
@@ -81,6 +82,31 @@ const AddItems = () => {
                 className="input input-bordered"
                 required
               />
+            </div>
+
+            {/* <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text text-sm font-bold">Quantity</span>
+              </label>
+              <input
+                {...register("quantity")}
+                type="number"
+                placeholder="quantity"
+                className="input input-bordered"
+                required
+              />
+            </div> */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text text-sm font-bold">Status</span>
+              </label>
+              <select
+                {...register("status")}
+                className="input input-bordered"
+              >
+                <option value="y">Available</option>
+                <option value="n">Not Available</option>
+              </select>
             </div>
           </div>
 

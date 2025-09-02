@@ -7,36 +7,35 @@ import { Link } from "react-router-dom";
 import { GrUpdate } from "react-icons/gr";
 
 const ManageItems = () => {
-  const [ menu, ,refetch ] = useMenu();
-  const axiosSecure = useAxiosSecure()
+  const [menu, , refetch] = useMenu();
+  const axiosSecure = useAxiosSecure();
 
   const handleDeleteItem = (item) => {
-    console.log(item._id)
+    console.log(item._id);
 
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then(async(result) => {
-        if (result.isConfirmed) {
-            const res = await axiosSecure.delete(`/menu/${item._id}`)
-            console.log(res.data)
-            if(res.data.deletedCount){
-                refetch()
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            }
-        
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(`/menu/${item._id}`);
+        console.log(res.data);
+        if (res.data.deletedCount) {
+          refetch();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
         }
-      });
-  }
+      }
+    });
+  };
 
   return (
     <div>
@@ -50,6 +49,7 @@ const ManageItems = () => {
               <th>#</th>
               <th>Image</th>
               <th>Name</th>
+              <th>Status</th>
               <th>Price</th>
               <th>Update</th>
               <th>Delete</th>
@@ -57,7 +57,7 @@ const ManageItems = () => {
           </thead>
           <tbody>
             {menu.map((item, idx) => (
-              <tr key={item._id} >
+              <tr key={item._id}>
                 <th>{idx + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
@@ -78,9 +78,14 @@ const ManageItems = () => {
                     {item.category}
                   </span>
                 </td>
+                <td>
+                  {item.status === "n"
+                    ? "Not Available"
+                    : "Available"}
+                </td>
                 <td>{item.price}</td>
                 <td>
-                <Link
+                  <Link
                     to={`/dashboard/updateItem/${item._id}`}
                     className="btn bg-white"
                   >
